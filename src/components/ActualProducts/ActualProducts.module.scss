@@ -1,0 +1,34 @@
+.main {
+  width: 100%;
+  padding: 40px 0;
+
+  .title {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .content {
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+
+    &__col {}
+
+    @media screen and (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+
+      &__col:last-child {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 750px) {
+      grid-template-columns: repeat(2, 1fr);
+
+      &__col:nth-last-child(1), &__col:nth-last-child(2) {
+        display: none;
+      }
+    }
+  }
+}

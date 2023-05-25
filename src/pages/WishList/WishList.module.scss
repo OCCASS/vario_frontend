@@ -1,0 +1,14 @@
+.empty {
+  &__link {
+    text-decoration: none;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
