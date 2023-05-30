@@ -1,0 +1,22 @@
+.main {
+    .title {
+        font-weight: 700;
+        line-height: 1.2em;
+        text-align: left;
+    }
+
+    .subtitle {
+        line-height: 1.2em;
+        text-align: left;
+    }
+
+    .icons {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        svg {
+            height: 42px;
+        }
+    }
+}

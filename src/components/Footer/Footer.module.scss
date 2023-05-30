@@ -1,147 +1,210 @@
 .main {
-  padding: 60px 0;
-  background: #e5e5e5e5;
+    padding: 60px 0;
+    background: #e5e5e5e5;
 
-  &__content {
-    width: 100%;
-    flex-direction: row !important;
-    justify-content: space-between;
-    gap: 120px;
-
-    & > * {
-      flex: 1;
-    }
-
-    .left {
-      display: flex;
-      flex-direction: column;
-
-      .logo {
-        font-family: "Zen Dots", sans-serif;
-        font-size: 2.5em;
-        text-transform: uppercase;
-        line-height: 1.5em;
-
-        &__end {
-          font-family: "Zen Dots", sans-serif;
-          font-size: 5rem;
-          text-transform: uppercase;
-        }
-      }
-
-      .email {
-        font-family: "Raleway", sans-serif;
-        font-weight: 500;
-        margin-bottom: 50px;
-      }
-
-      .footer {
-        text-transform: uppercase;
-      }
-    }
-
-    .center {
-      @media screen and (max-width: 1000px) {
-        display: none;
-      }
-
-      table {
+    &__content {
         width: 100%;
-        table-layout: fixed;
+        flex-direction: row !important;
+        justify-content: space-between;
+        gap: 120px;
 
-        tr {
-          text-transform: uppercase;
+        & > * {
+            flex: 1;
+        }
 
-          a {
-            text-decoration: none;
-            color: #000000
-          }
+        .left {
+            display: flex;
+            flex-direction: column;
 
-          th {
-            text-align: left;
+            .logo {
+                font-family: "Zen Dots", sans-serif;
+                font-size: 2.5em;
+                text-transform: uppercase;
+                line-height: 1.5em;
 
-            a {
-              font-weight: 700;
+                &__end {
+                    font-family: "Zen Dots", sans-serif;
+                    font-size: 5rem;
+                    text-transform: uppercase;
+                }
             }
-          }
+
+            .email {
+                font-family: "Raleway", sans-serif;
+                font-weight: 500;
+                margin-bottom: 50px;
+            }
+
+            .footer {
+                text-transform: uppercase;
+            }
         }
-      }
+
+        .center {
+            table {
+                width: 100%;
+                table-layout: fixed;
+
+                tr {
+                    text-transform: uppercase;
+
+                    a {
+                        text-decoration: none;
+                        color: #000000;
+                    }
+
+                    th {
+                        text-align: left;
+
+                        a {
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+
+            .email {
+                display: none;
+                font-family: "Raleway", sans-serif;
+                font-weight: 500;
+                font-size: 0.6em;
+            }
+
+            .social {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                gap: 15px;
+
+                margin-bottom: 15px;
+
+                &__item {
+                    a {
+                        color: #000000;
+                    }
+
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+
+            .title {
+                font-weight: 700;
+                text-align: right;
+                font-size: 0.7em;
+            }
+
+            .subtitle {
+                color: #727272;
+                text-align: right;
+                font-size: 0.7em;
+            }
+
+            .subscribe {
+                display: flex;
+                align-items: center;
+
+                margin-top: 15px;
+
+                &__input {
+                    border: none;
+                    border-top: 1px solid transparent;
+                    border-bottom: 2px solid #000000;
+                    box-shadow: none;
+                    height: 100%;
+                    outline: none;
+                    background: transparent;
+                    padding: 0;
+
+                    &:focus {
+                        outline: none;
+                    }
+
+                    &::placeholder {
+                        text-transform: uppercase;
+                        color: #000000;
+                        opacity: 1;
+                    }
+                }
+
+                &__input:disabled {
+                    border-bottom: 2px solid #cccccc;
+
+                    &::placeholder {
+                        color: #999999;
+                    }
+                }
+
+                &__button {
+                    text-transform: uppercase;
+                    background: #000000;
+                    color: #ffffff;
+                    border: none;
+                    font-size: 0.7em;
+                    padding: 6px 12px;
+                    cursor: pointer;
+                }
+
+                &__button:disabled {
+                    cursor: default;
+                    background: #cccccc;
+                    color: #999999;
+                }
+            }
+        }
     }
 
-    .right {
-      display: flex;
-      align-items: flex-end;
-      flex-direction: column;
-
-      .social {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        gap: 15px;
-
-        margin-bottom: 15px;
-
-        &__item {
-          a {
-            color: #000000;
-          }
-
-          svg {
-            width: 24px;
-            height: 24px;
-          }
+    @media screen and (max-width: 1000px) {
+        .center {
+            display: none;
         }
-      }
-
-      .title {
-        font-weight: 700;
-        text-align: right;
-        font-size: 0.7em;
-      }
-
-      .subtitle {
-        color: #727272;
-        text-align: right;
-        font-size: 0.7em;
-      }
-
-      .subscribe {
-        display: flex;
-        align-items: center;
-
-        margin-top: 15px;
-
-        &__input {
-          border: none;
-          border-top: 1px solid transparent;
-          border-bottom: 2px solid #000000;
-          box-shadow: none;
-          height: 100%;
-          outline: none;
-          background: transparent;
-          padding: 0;
-
-          &:focus {
-            outline: none;
-          }
-
-          &::placeholder {
-            text-transform: uppercase;
-            color: #000000;
-            opacity: 1;
-          }
-        }
-
-        &__button {
-          text-transform: uppercase;
-          background: #000000;
-          color: #ffffff;
-          border: none;
-          font-size: 0.7em;
-          padding: 6px 12px;
-          cursor: pointer;
-        }
-      }
     }
-  }
+
+    @media screen and (max-width: 768px) {
+        &__content {
+            gap: 0;
+
+            .left {
+                .logo {
+                    font-size: 1em;
+
+                    &__end {
+                        font-size: 2rem;
+                    }
+                }
+
+                .footer {
+                    font-size: 0.6em;
+                }
+
+                .email {
+                    display: none;
+                }
+            }
+
+            .right {
+                .title,
+                .subtitle,
+                .subscribe {
+                    display: none;
+                }
+
+                .email {
+                    display: block;
+                }
+
+                .social {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
 }

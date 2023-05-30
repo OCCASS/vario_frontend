@@ -1,39 +1,41 @@
 .slider {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 
-  &__button_left, &__button_right {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    z-index: 5;
-    cursor: pointer;
+    &__button_left,
+    &__button_right {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        z-index: 5;
+        cursor: pointer;
 
-    svg {
-      width: 24px;
-      height: 24px;
-      color: #000000;
+        svg {
+            width: 24px;
+            height: 24px;
+            color: #000000;
+        }
+
+        &:hover {
+            svg {
+                stroke-width: 2;
+            }
+        }
     }
 
-    &:hover {
-      svg {
-        stroke-width: 2;
-      }
+    &__button_left {
+        left: 0;
     }
-  }
 
-  &__button_left {
-    left: 0;
-  }
+    &__button_right {
+        right: 0;
+    }
 
-  &__button_right {
-    right: 0;
-  }
-
-  &__item {
-    position: absolute;
-    height: 100%;
-    transition: all 1s ease;
-    object-fit: contain;
-  }
+    &__item {
+        position: absolute;
+        height: 100%;
+        transition: all 1s ease;
+        object-fit: contain;
+        padding: 0 10px;
+    }
 }

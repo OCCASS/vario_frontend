@@ -1,11 +1,17 @@
 .wrapper {
-  max-width: 1400px;
-  width: 100%;
-  flex: 1;
+    max-width: 1400px;
+    width: 100%;
+    flex: 1;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  padding: 0 20px !important;
-  margin: auto;
+    padding: 0 20px !important;
+    margin: auto;
+
+    @media screen and (max-width: 768px) {
+        & {
+            padding: 0 40px !important;
+        }
+    }
 }

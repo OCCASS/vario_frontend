@@ -1,34 +1,24 @@
 .main {
-  width: 100%;
-  padding: 40px 0;
+    width: 100%;
+    padding: 40px 0;
 
-  .title {
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  .content {
-    padding: 20px 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-
-    &__col {}
-
-    @media screen and (max-width: 1200px) {
-      grid-template-columns: repeat(3, 1fr);
-
-      &__col:last-child {
-        display: none;
-      }
+    .title {
+        font-weight: 600;
+        text-transform: uppercase;
     }
 
-    @media screen and (max-width: 750px) {
-      grid-template-columns: repeat(2, 1fr);
+    .content {
+        padding: 20px 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
 
-      &__col:nth-last-child(1), &__col:nth-last-child(2) {
-        display: none;
-      }
+        &__col {
+        }
+
+        @media screen and (max-width: 1200px) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
     }
-  }
 }

@@ -1,12 +1,13 @@
 * {
-    font-size: 14px;
+    font-size: 16px;
     font-family: "Space Mono", "Roboto Mono", monospace;
     font-weight: 400;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100svh !important;
+    min-height: 100svh !important;
 }
 
 body.no_scroll {
@@ -14,6 +15,6 @@ body.no_scroll {
 }
 
 #root {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
