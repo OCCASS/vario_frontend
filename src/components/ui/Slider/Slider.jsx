@@ -6,13 +6,13 @@ const Slider = ({ images, currentSlide, setCurrentSlide, className = "" }) => {
     const [touchEnd, setTouchEnd] = useState(0);
 
     const nextSlide = () => {
-        setCurrentSlide((prev) =>
-            prev === images.length - 1 ? prev : prev + 1
+        setCurrentSlide(
+            currentSlide === images.length - 1 ? currentSlide : currentSlide + 1
         );
     };
 
     const prevSlide = () => {
-        setCurrentSlide((prev) => (prev === 0 ? 0 : prev - 1));
+        setCurrentSlide(currentSlide === 0 ? 0 : currentSlide - 1);
     };
 
     const getSlideStyles = (index) => {

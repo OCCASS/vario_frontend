@@ -1,23 +1,35 @@
-import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import React, { useEffect } from "react";
+import Layout from "../../components/layout/Layout";
 import styles from "./Product.module.scss";
-import ActualProducts from "../../components/ActualProducts/ActualProducts";
-import Slider from "../../components/Slider/Slider";
+import ActualProducts from "../../components/shared/ActualProducts/ActualProducts";
+import Slider from "../../components/ui/Slider/Slider";
 import PaymentDescription from "./PaymentDescription";
 import { Link, useParams } from "react-router-dom";
 import { useGetProductQuery } from "../../store/api/api.slice";
 import { useWishlist } from "../../context/wishlistContext";
+import ProductStore from "./ProductStore";
+import { observer } from "mobx-react-lite";
 
-const Product = () => {
+const store = new ProductStore();
+
+const Product = observer(() => {
+    const {
+        resetSelectedSizeIndex,
+        resetCurrentImageSlide,
+        setDetail,
+        setSizes,
+        detail,
+        sizes,
+        currentImageSlide,
+        setCurrentImageSlide,
+        selectedSizeIndex,
+        setSelectedSizeIndex,
+    } = store;
+
     const { product_id, id } = useParams();
     const { addToWishlist, getWishlistItem, removeFromWishlist } =
         useWishlist();
     const { data: product, isLoading } = useGetProductQuery(product_id);
-
-    const [detail, setDetail] = useState({});
-    const [sizes, setSizes] = useState([]);
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [selectedSizeIndex, setSelectedSizeIndex] = useState(null);
 
     const numberWithSpaces = (num) => {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -33,9 +45,9 @@ const Product = () => {
 
     // if user going to another page of the product (ex. set item color) reset slider and selected size
     useEffect(() => {
-        setSelectedSizeIndex(null);
-        setCurrentSlide(0);
-    }, [id]);
+        resetSelectedSizeIndex();
+        resetCurrentImageSlide();
+    }, [id, resetSelectedSizeIndex, resetCurrentImageSlide]);
 
     useEffect(() => {
         if (!isLoading) {
@@ -54,12 +66,12 @@ const Product = () => {
             <div className={styles.main__main_content}>
                 <Slider
                     images={
-                        detail?.images === undefined
+                        !detail?.images
                             ? []
                             : detail?.images.map((value) => value.url)
                     }
-                    currentSlide={currentSlide}
-                    setCurrentSlide={setCurrentSlide}
+                    currentSlide={currentImageSlide}
+                    setCurrentSlide={setCurrentImageSlide}
                     className={styles.images_slider}
                 />
                 <div className={styles.content}>
@@ -167,43 +179,48 @@ const Product = () => {
                         </div>
                         <div className={styles.sizes}>
                             <table>
-                                <tr>
-                                    <td>circumference</td>
-                                    <td className={styles.size}>
-                                        {
-                                            detail.description?.measurements
-                                                ?.circumference
-                                        }{" "}
-                                        cm
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>heel</td>
-                                    <td className={styles.size}>
-                                        {detail.description?.measurements?.heel}{" "}
-                                        cm
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>height</td>
-                                    <td className={styles.size}>
-                                        {
-                                            detail.description?.measurements
-                                                ?.height
-                                        }{" "}
-                                        cm
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>sole height</td>
-                                    <td className={styles.size}>
-                                        {
-                                            detail.description?.measurements
-                                                ?.sole_height
-                                        }{" "}
-                                        cm
-                                    </td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>circumference</td>
+                                        <td className={styles.size}>
+                                            {
+                                                detail.description?.measurements
+                                                    ?.circumference
+                                            }{" "}
+                                            cm
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>heel</td>
+                                        <td className={styles.size}>
+                                            {
+                                                detail.description?.measurements
+                                                    ?.heel
+                                            }{" "}
+                                            cm
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>height</td>
+                                        <td className={styles.size}>
+                                            {
+                                                detail.description?.measurements
+                                                    ?.height
+                                            }{" "}
+                                            cm
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>sole height</td>
+                                        <td className={styles.size}>
+                                            {
+                                                detail.description?.measurements
+                                                    ?.sole_height
+                                            }{" "}
+                                            cm
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -327,6 +344,6 @@ const Product = () => {
             <ActualProducts title={"recommend"} />
         </Layout>
     );
-};
+});
 
 export default Product;

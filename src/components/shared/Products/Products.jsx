@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect} from "react";
 import styles from "./Products.module.scss";
 import Product from "../Product/Product";
 import ActualProducts from "../ActualProducts/ActualProducts";
+import productsStore from "./ProductsStore";
+import {observer} from "mobx-react-lite";
 
-const Products = ({ products, isLoading, noProductsElement = "No data" }) => {
-    const [totalCount, setTotalCount] = useState(0);
+const Products = observer(({ products, isLoading, noProductsElement = "No data" }) => {
+    const {totalCount, setTotalCount} = productsStore
 
     useEffect(() => {
         setTotalCount(
@@ -65,6 +67,6 @@ const Products = ({ products, isLoading, noProductsElement = "No data" }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Products;

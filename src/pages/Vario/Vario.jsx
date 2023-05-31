@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Vario.module.scss";
 import { Link } from "react-router-dom";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 
 const Vario = () => {
     return (

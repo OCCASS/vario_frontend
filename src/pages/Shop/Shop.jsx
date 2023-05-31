@@ -1,9 +1,9 @@
 import React from "react";
-import FilterBar from "../../components/FilterBar/FilterBar";
+import FilterBar from "../../components/ui/FilterBar/FilterBar";
 import styles from "./Shop.module.scss";
-import Products from "../../components/Products/Products";
-import Layout from "../../components/Layout/Layout";
-import NoProducts from "../../components/NoProducts/NoProducts";
+import Products from "../../components/shared/Products/Products";
+import Layout from "../../components/layout/Layout";
+import NoProducts from "../../components/shared/NoProducts/NoProducts";
 import { useGetProductsQuery } from "../../store/api/api.slice";
 import { useParams, useSearchParams } from "react-router-dom";
 

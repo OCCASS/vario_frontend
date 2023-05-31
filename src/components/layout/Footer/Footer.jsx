@@ -16,31 +16,33 @@ const Footer = () => {
                 </div>
                 <div className={styles.center}>
                     <table>
-                        <tr>
-                            <th>
-                                <Link to={"/shop"}>shop</Link>
-                            </th>
-                            <th>
-                                <Link to={"/vario"}>vario</Link>
-                            </th>
-                            <th>
-                                <Link to={"/"}>main</Link>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <Link to={"/shop/clothes/"}>clothes</Link>
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <Link to={"/shop/shoes/"}>shoes</Link>
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <Link to={"/shop"}>shop</Link>
+                                </th>
+                                <th>
+                                    <Link to={"/vario"}>vario</Link>
+                                </th>
+                                <th>
+                                    <Link to={"/"}>main</Link>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <Link to={"/shop/clothes/"}>clothes</Link>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <Link to={"/shop/shoes/"}>shoes</Link>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div className={styles.right}>

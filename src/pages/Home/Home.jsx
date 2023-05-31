@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Home.module.scss";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 import BackgroundImage from "./BackgroundImage";
 
 const Home = () => {

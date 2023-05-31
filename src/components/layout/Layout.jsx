@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Layout.module.scss";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import Wrapper from "../Wrapper/Wrapper";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+import Wrapper from "./Wrapper/Wrapper";
 
 const Layout = ({
     children,

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Product.module.scss";
 import { Link } from "react-router-dom";
-import { useWishlist } from "../../context/wishlistContext";
+import { useWishlist } from "../../../context/wishlistContext";
 
 const Product = ({
     id,

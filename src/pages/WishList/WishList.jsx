@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
-import Products from "../../components/Products/Products";
+import Layout from "../../components/layout/Layout";
+import Products from "../../components/shared/Products/Products";
 import { useWishlist } from "../../context/wishlistContext";
 import { useGetProductsQuery } from "../../store/api/api.slice";
 import styles from "./WishList.module.scss";

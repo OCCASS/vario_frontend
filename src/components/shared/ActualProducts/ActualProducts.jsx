@@ -1,5 +1,5 @@
 import React from 'react';
-import image from "../../images/image1.png"
+import image from "../../../images/image1.png"
 import styles from "./ActualProducts.module.scss"
 import Product from "../Product/Product";
 

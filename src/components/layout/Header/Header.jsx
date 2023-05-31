@@ -1,20 +1,32 @@
-import React, { useState, useRef } from "react";
-import { NavLink, useNavigate, Link } from "react-router-dom";
-import { useOutsideClickHandler } from "../../hooks/useOutsideClickHandler";
+import React, { useRef } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useOutsideClickHandler } from "../../../hooks/useOutsideClickHandler";
 import Wrapper from "../Wrapper/Wrapper";
 import styles from "./Header.module.scss";
+import { observer } from "mobx-react-lite";
+import headerStore from "./HeaderStore";
 
-const Header = () => {
-    const [search, setSearch] = useState("");
-
-    const [showNavbar, setShowNavbar] = useState(false);
-    const [showShopDropdown, setShowShopDropdown] = useState(false);
-    const [showSearch, setShowSearch] = useState(false);
+const Header = observer(() => {
+    const {
+        showShopDropdown,
+        hideShopDropdown,
+        toggleShopDropdown,
+        showNavbar,
+        hideNavbar,
+        toggleNavbar,
+        toggleSearchBar,
+        hideSearchBar,
+        setShowSearchBar,
+        showSearchBar,
+        searchString,
+        search,
+        setSearch,
+    } = headerStore;
 
     const shopLinkRef = useRef(null);
 
     useOutsideClickHandler(shopLinkRef, () => {
-        setShowShopDropdown(false);
+        hideShopDropdown();
     });
 
     const navigate = useNavigate();
@@ -22,37 +34,34 @@ const Header = () => {
         if (e.key === "Enter") {
             navigate({
                 pathname: "/shop/",
-                search: search.length > 0 ? `?s=${search.trim()}` : "",
+                search: searchString.length > 0 ? `?s=${searchString}` : "",
             });
             e.target.blur();
-            setShowNavbar(false);
-            setShowSearch(false);
+            hideNavbar();
+            hideSearchBar();
         } else {
-            setShowSearch(true);
+            setShowSearchBar(true);
         }
     };
 
     const handleSearchButton = (e) => {
-        if (showSearch && search.length > 0) {
+        if (showSearchBar && searchString.length > 0) {
             navigate({
                 pathname: "/shop/",
-                search: search.length > 0 ? `?s=${search.trim()}` : "",
+                search: searchString.length > 0 ? `?s=${searchString}` : "",
             });
             e.target.blur();
-            setShowNavbar(false);
-            setShowSearch(false);
+            hideNavbar();
+            hideSearchBar();
         } else {
-            setShowSearch(true);
+            setShowSearchBar(true);
         }
     };
 
     return (
         <header className={styles.header}>
             <Wrapper>
-                <div
-                    className={styles.mobile_button}
-                    onClick={() => setShowNavbar((prev) => !prev)}
-                >
+                <div className={styles.mobile_button} onClick={toggleNavbar}>
                     --- menu{" "}
                     {showNavbar ? (
                         <svg
@@ -90,9 +99,7 @@ const Header = () => {
                                         }
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            setShowShopDropdown(
-                                                (prev) => !prev
-                                            );
+                                            toggleShopDropdown();
                                         }}
                                         ref={shopLinkRef}
                                     >
@@ -108,7 +115,7 @@ const Header = () => {
                                             className={
                                                 styles.shop_dropdown__item
                                             }
-                                            onClick={() => setShowNavbar(false)}
+                                            onClick={hideNavbar}
                                         >
                                             <NavLink
                                                 className={({ isActive }) =>
@@ -129,7 +136,7 @@ const Header = () => {
                                             className={
                                                 styles.shop_dropdown__item
                                             }
-                                            onClick={() => setShowNavbar(false)}
+                                            onClick={hideNavbar}
                                         >
                                             <NavLink
                                                 className={({ isActive }) =>
@@ -171,9 +178,7 @@ const Header = () => {
                                             : ""
                                     }`}
                                     id={styles.search}
-                                    onClick={() =>
-                                        setShowSearch((prev) => !prev)
-                                    }
+                                    onClick={toggleSearchBar}
                                 >
                                     <div className={styles.search__icon}>
                                         <svg
@@ -200,7 +205,7 @@ const Header = () => {
                                         }
                                         onKeyDown={onKeyDown}
                                         className={`${styles.search__input} ${
-                                            showSearch ? styles.show : ""
+                                            showSearchBar ? styles.show : ""
                                         }`}
                                     />
                                     <div
@@ -284,7 +289,7 @@ const Header = () => {
                             <Link
                                 to={"/"}
                                 className={styles.nav__bottom__title}
-                                onClick={() => setShowNavbar(false)}
+                                onClick={hideNavbar}
                             >
                                 var
                                 <span
@@ -299,6 +304,6 @@ const Header = () => {
             </Wrapper>
         </header>
     );
-};
+});
 
 export default Header;
